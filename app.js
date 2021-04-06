@@ -22,6 +22,19 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
 
+//Conexion a base de datos
+const mongoose = require('mongoose');
+const user='efkrod';
+const password='dtnsCPhEcuCJwBDq';
+const dbname='clothingStore'
+const uri=`mongodb+srv://${user}:${password}@cluster0.1xe0c.mongodb.net/${dbname}?retryWrites=true&w=majority`;
+
+mongoose.connect(uri,
+    {useNewUrlParser:true, useUnifiedTopology:true}
+)
+    .then(()=> console.log('Base de datos conectada'))
+    .catch(e=> console.log(e));
+
 //Motor de plantillas
 app.set('view engine','ejs');
 app.set('views',__dirname+'/view');
