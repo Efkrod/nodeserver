@@ -1,0 +1,26 @@
+<%- include('template/cabecera', {tituloWeb:'Inicio'});%>
+    <div class="container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Color</th>
+                    <th scope="col">Accion</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% if (arrayRopa.length>0) { %>
+                    <% arrayRopa.forEach(ropa=> { %>
+                        <tr>
+                            <th scope="row"><%=ropa.id%></th>
+                            <td><%=ropa.nombre%></td>
+                            <td><%=ropa.color%></td>
+                            <td>@mdo</td>
+                        </tr>
+                    <% }) %>
+                <% } %>              
+            </tbody>
+        </table>
+    </div>
+<%- include('template/footer');%>

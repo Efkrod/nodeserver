@@ -18,30 +18,26 @@ const separar = (persona) => {
 
 console.log(separar(p.nombre))*/
 
-const express = require("express");
+const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
 
 //Motor de plantillas
-app.set('view engine','ejs')
-app.set('views',__dirname+'/view')
+app.set('view engine','ejs');
+app.set('views',__dirname+'/view');
 
-app.use(express.static(__dirname+"/public"))
+app.use(express.static(__dirname+"/public"));
 
-app.get('/index',(req,res)=>{
-    res.render("index.ejs",{titulo: "My dinamic title"})
-});
-
-app.get('/services',(req,res)=>{
-    res.render("servicios.ejs",{tituloServicios: "My dinamic services title "})
-})
+//Rutas web
+app.use('/', require('./router/routes.js'));
+app.use('/clothes', require('./router/clothes.js'))
 
 app.use((req, res, next)=>{
-    res.status(404).render("404.ejs",{mensaje: "404 not found"})
-})
+    res.status(404).render("404.ejs",{mensaje: "404 not found"});
+});
 
 app.listen(port,()=>{
-    console.log("Server en el puerto",port)
-})
+    console.log("Server en el puerto",port);
+});
 
 
