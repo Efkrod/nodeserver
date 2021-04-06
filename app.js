@@ -1,33 +1,14 @@
-/*const {f,m,p} = require("./objetos");
-const cowsay = require("cowsay");
-
-console.log(cowsay.say({
-    text: "Hi everyone",
-    e: "W",
-    T: "U "
-}));
-
-const impresion = f.forEach(fruta => {
-    console.log(fruta)
-})
-console.log(m)
-const separar = (persona) => {
-    persona.split()
-    return persona[0]
-}
-
-console.log(separar(p.nombre))*/
-
 const express = require('express');
 const app = express();
+
+//Variables de entorno
+require('dotenv').config();
 const port = process.env.PORT || 3000;
 
 //Conexion a base de datos
 const mongoose = require('mongoose');
-const user='efkrod';
-const password='dtnsCPhEcuCJwBDq';
-const dbname='clothingStore'
-const uri=`mongodb+srv://${user}:${password}@cluster0.1xe0c.mongodb.net/${dbname}?retryWrites=true&w=majority`;
+
+const uri=`mongodb+srv://${process.env.USER}:${process.env.PASSWORD}@cluster0.1xe0c.mongodb.net/${process.env.DBNAME}?retryWrites=true&w=majority`;
 
 mongoose.connect(uri,
     {useNewUrlParser:true, useUnifiedTopology:true}
