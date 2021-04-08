@@ -20,4 +20,14 @@ router.get('/create', async (req, res)=>{
     res.render("create")
 });
 
+router.post('/',async(req, res)=>{
+    const body = req.body
+    try {
+        await clothes.create(body)
+        res.redirect("/clothes")
+    } catch (error) {
+        console.log(error) 
+    }
+});
+
 module.exports = router;
