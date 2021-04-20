@@ -7,6 +7,6 @@ const clotheSchema = new Schema({
 });
 
 //modelo
-
+//'clothes' ruta
 const clothes = mongoose.model('clothes',clotheSchema);
 module.exports = clothes;

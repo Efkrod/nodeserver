@@ -1,10 +1,13 @@
-<%- include('template/cabecera', {tituloWeb:'Inicio'});%>
+<%- include('template/cabecera', {tituloWeb:'Inicio'})%>
     <div class="container">
-        <a class="btn btn-success btn-block my-4" 
+        <div class="d-grid gap-2">
+            <a class="btn btn-success my-4" 
             type="submit"
             href="/clothes/create">
             Crear nueva prenda
         </a>
+        </div>
+        
         <table class="table">
             <thead>
                 <tr>
@@ -16,16 +19,20 @@
             </thead>
             <tbody>
                 <% if (arrayRopa.length>0) { %>
-                    <% arrayRopa.forEach(ropa=> { %>
+                    <% arrayRopa.forEach(clothes=> { %>
                         <tr>
-                            <th scope="row"><%=ropa.id%></th>
-                            <td><%=ropa.nombre%></td>
-                            <td><%=ropa.color%></td>
-                            <td>@mdo</td>
+                            <th scope="row"><%=clothes.id%></th>
+                            <td><%=clothes.nombre%></td>
+                            <td><%=clothes.color%></td>
+                            <td>
+                                <a href="clothes/<%=clothes.id%>" class="btn btn-warning btn-sm">
+                                    Editar
+                                </a>
+                            </td>
                         </tr>
                     <% }) %>
                 <% } %>              
             </tbody>
         </table>
     </div>
-<%- include('template/footer');%>
+<%- include('template/footer')%>

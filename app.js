@@ -27,13 +27,14 @@ app.set('views',__dirname+'/view');
 app.use(express.static(__dirname+"/public"));
 
 //Rutas web
-app.use('/', require('./router/routes.js'));
-app.use('/clothes', require('./router/clothes.js'))
+app.use('/', require('./router/routes'));
+app.use('/clothes', require('./router/clothes'))
 
 app.use((req, res, next)=>{
     res.status(404).render("404.ejs",{mensaje: "404 not found"});
 });
 
+//Escuchando al servidor
 app.listen(port,()=>{
     console.log("Server en el puerto",port);
 });

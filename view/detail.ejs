@@ -1,0 +1,41 @@
+<%- include('template/cabecera', {tituloWeb:'Detalle'})%>
+    <div class="container">
+        <h1>Detalle de la prenda</h1>
+        <% if (error) { %>
+            <p>
+                <%=mensaje%>
+            </p>
+            <a href="/clothes" class="btn btn-dark btn-block">
+                Volver a clothes
+            </a>
+            <% } %>
+                <% if (!error) { %>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">id</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Color</th>
+                                <th scope="col">Accion</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">
+                                    <%=prenda.id%>
+                                </th>
+                                <td>
+                                    <%=prenda.nombre%>
+                                </td>
+                                <td>
+                                    <%=prenda.color%>
+                                </td>
+                                <td>@mdo</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <% } %>
+                
+    </div>
+    
+    <%- include('template/footer')%>
