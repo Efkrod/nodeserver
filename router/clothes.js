@@ -46,4 +46,45 @@ router.get('/:id', async (req, res) => {
     }
 });
 
+router.delete('/:id',async(req, res)=>{
+    const id = req.params.id
+    try {
+        const clothesDB = await clothes.findByIdAndDelete({ _id: id })
+        if (clothesDB) {
+            res.json({
+                estado: true,
+                mensaje: 'Eliminado'
+            })
+        } else {
+            res.json({
+                estado: false,
+                mensaje: 'Fallo al eliminar'
+            })
+        }
+    } catch (error) {
+        console.log(error)
+    }
+});
+
+router.put('/:id', async(req, res)=>{
+    const id = req.params.id
+    const body = res.body
+    console.log('id',id)
+    console.log('body', body)
+    try {
+        const clothesDB = await clothes.findByIdAndUpdate(id, body, {useFindAndModify: false})
+        console.log(clothesDB )
+        res.json({
+            estado: true,
+            mensaje: 'Editado con exito'
+        })
+    } catch (error) {
+        console.log(error)
+        res.json({
+            estado: false,
+            mensaje: 'FALLA'
+        })
+    }
+})
+
 module.exports = router;
